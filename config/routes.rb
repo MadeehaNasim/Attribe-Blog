@@ -1,8 +1,11 @@
 Blog::Application.routes.draw do
  
-  resources :articles do
-    resources :comments
-  end
+  resources :users, :blogs
+  resources :sessions, :only => [:new, :create, :destroy]
+  
+  get '/signup', :to => "users#new"
+  get '/signin', :to => "sessions#new"
+  #match '/signout', :to => "sessions#destroy"
  
-  root 'welcome#index'
+  #root 'welcome#index'
 end
